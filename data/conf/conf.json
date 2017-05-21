@@ -1,0 +1,21 @@
+{
+	"unitSlotWidth" : 75,
+	"unitSlotHeight" : 54,
+	"unitSlotPositionsX": [1,80,160,239,319],
+	"unitSlotPositionsY": [185,297,410],
+	"unitSlotInformations": [
+		{"x":3,"y":1,"bannerName":"Dragon Killers"},
+		{"x":4,"y":1,"bannerName":"Dragon Killers"},
+		{"x":5,"y":1,"bannerName":"Dragon Killers"},
+		{"x":1,"y":2,"bannerName":"Dragon Killers"},
+		{"x":2,"y":2,"bannerName":"Dragon Killers"},
+		{"x":3,"y":2,"bannerName":"Dragon Killers"},
+		{"x":4,"y":2,"bannerName":"Dragon Killers"},
+		{"x":5,"y":2,"bannerName":"Dragon Killers"},
+		{"x":1,"y":3,"bannerName":"Dragon Killers"},
+		{"x":2,"y":3,"bannerName":"Dragon Killers"},
+		{"x":3,"y":3,"bannerName":"Dragon Killers"},
+		{"x":4,"y":3,"bannerName":"Free"},
+		{"x":5,"y":3,"bannerName":"Type-0 (3)"}
+	]
+}
