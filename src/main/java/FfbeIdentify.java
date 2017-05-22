@@ -27,15 +27,18 @@ public class FfbeIdentify {
 	public static int IMAGE_SLOT_WIDTH, IMAGE_SLOT_HEIGHT;
 	private static String dataFolder ;
 	
-	public static List<CoordinateInformation> coordinates;
+	public static List<CoordinateInformation> coordinates = new ArrayList<>();
 	public static Set<String> bannerNameList = new TreeSet<>();
 
 	public static void main(String[] args) throws IOException {
 
 		long startTime = System.currentTimeMillis();
 		
-		dataFolder = args[0];
-		coordinates = getCoordinates();
+		if (args.length > 0) {
+			dataFolder = args[0];
+		} else {
+			dataFolder = "data";
+		}
 		
 		
 
@@ -158,23 +161,11 @@ public class FfbeIdentify {
         	Y_POSITIONS[i] = array.getInt(i);
         }
 
-        //json.getJsonArray("unitSlotInformations").stream()
-	}
-
-	private static List<CoordinateInformation> getCoordinates() throws IOException {
-		List<CoordinateInformation> result = new ArrayList<>();
-
-		try (Stream<String> stream = Files.lines(Paths.get(dataFolder + "/conf/unitsCoordinateInformation.txt"))) {
-	        stream.forEach(line -> {
-	        	String[] tokens = line.split(",");
-	        	if (tokens.length != 3) {
-	        		System.out.println("Error in unitsCoordinateInformation.txt format. Line : " + line);
-	        		System.exit(1);
-	        	}
-	        	result.add(new CoordinateInformation(Integer.parseInt(tokens[0].trim()), Integer.parseInt(tokens[1].trim()), tokens[2].trim()));
-	        });
-		}
-		return result;
+        array = json.getJsonArray("unitSlotInformations");
+        for (int i = 0; i < array.size(); ++i) {
+        	JsonObject coordinate = array.getJsonObject(i);
+        	coordinates.add(new CoordinateInformation(coordinate.getInt("x"), coordinate.getInt("y"), coordinate.getString("bannerName")));
+        }
 	}
 
 	private static Map<String, BufferedImage> getReferences() throws IOException {
